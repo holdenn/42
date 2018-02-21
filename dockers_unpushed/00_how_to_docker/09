@@ -1,0 +1,2 @@
+docker pull debian
+docker run --name debian_cont -it

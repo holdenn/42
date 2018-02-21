@@ -1,0 +1,6 @@
+Il faudrait rajouter au fichier host les deux lignes suivantes :
+46.19.122.85 intra.42.fr
+46.19.122.85 www.intra.42.fr
+
+Pour etre certain que le changement est direct, on peut vider le cash dns avec la commande suivante :
+dscacheutil -flushcache

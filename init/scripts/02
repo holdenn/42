@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# Pour crontab :
+# crontab -e
+# 0 4 * * 0 /home/02 
+
+#VAR
+FILE=update_script.log
+PATH=/var/log/$FILE
+
+apt-get -y update >> $PATH
+apt-get -y upgrade >> $PATH

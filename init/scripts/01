@@ -1,0 +1,7 @@
+#! /bin/bash
+# Script to display username, UID and PATH for each line of etc/passwd
+
+#ENV VAR
+FILE=/etc/passwd
+
+cat $FILE | cut -d ":" -f 1,3,7
