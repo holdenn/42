@@ -24,7 +24,7 @@ if brew update && brew install docker && brew install docker-machine && docker -
 	echo "<< Successful >>"
 else
 	echo "<< Abort >>"
-	return 1
+	return -1
 fi
 
 #create a machine
@@ -45,5 +45,5 @@ if docker container &> /dev/null ls; then
 	echo "<< Successful >>"
 else
 	echo "<< Error: please execute the script with \"source\" command >>"
-	return 1
+	return -1
 fi
