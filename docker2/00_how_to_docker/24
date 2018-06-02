@@ -1,6 +1,0 @@
-#Le service permet de deployer des images en mode swarm.
-
-#on specifie --hostname car rabbitmq store ses donnees a cet endroit, si l'on ne specifie rien, il alloue un hostname random.
-#le reste est specifiee sur la doc docker Hub
-
-docker service create --name orbital-command --hostname orbital-command -e RABBITMQ_DEFAULT_USER=qchantel -e RABBITMQ_DEFAULT_PASS=4242 --network overmind rabbitmq
