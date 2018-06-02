@@ -1,0 +1,2 @@
+docker pull alpine
+docker run --name alp_cont --rm -it alpine sh
