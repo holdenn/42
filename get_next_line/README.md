@@ -1,6 +1,4 @@
-# Project Title
-
-Get next line
+# get_next_line
 
 ## Getting Started
 
