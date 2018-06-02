@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel2.c                                       :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:17:19 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:24:57 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/14 15:16:02 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/14 15:19:26 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	ft_strdel(char **as)
 {
-	if (!as || !*as)
+	if (!(as))
 		return ;
-	if (*as != NULL && as != NULL)
-		ft_memdel((void**)as);
+	free(*as);
+	*as = NULL;
 }

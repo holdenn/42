@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl2.c                                      :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:36:32 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:29:02 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/08 20:49:32 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/14 18:53:33 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 void	ft_putendl(char const *s)
 {
-	if (!s)
+	if (!(s))
 		return ;
-	ft_putendl_fd(s, 1);
+	ft_putstr(s);
+	ft_putchar('\n');
 }

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap2.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:12:33 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:26:04 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/14 15:00:10 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/14 15:10:01 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	unsigned int	i;
-	char			*new;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	new = NULL;
-	if (s == NULL || f == NULL)
+	j = 0;
+	if (!(f) || !(s))
 		return (NULL);
-	new = ft_strnew(ft_strlen(s));
-	if (new == NULL)
+	i = ft_strlen(s);
+	if ((str = ft_memalloc(i + 1)) == NULL)
 		return (NULL);
-	while (s[i])
+	while (i > 0)
 	{
-		new[i] = (*f)(s[i]);
-		i++;
+		str[j] = f(s[j]);
+		j++;
+		i--;
 	}
-	return (new);
+	return (str);
 }

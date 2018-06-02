@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr2.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 22:47:37 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/21 04:18:11 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/12 18:01:53 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/12 18:08:32 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	int		flag;
 
-	i = ft_strlen(s);
-	while (i != 0 && s[i] != (char)c)
-		i--;
-	if (s[i] == (char)c)
-		return ((char *)s + i);
-	return (NULL);
+	flag = -1;
+	i = 0;
+	while ((s[i]))
+	{
+		if (s[i] == c)
+			flag = i;
+		i++;
+	}
+	if (s[i] == '\0' && c == 0)
+		return ((char*)&s[i]);
+	if (flag == -1)
+		return (NULL);
+	return ((char*)&s[flag]);
 }

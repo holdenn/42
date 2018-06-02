@@ -3,41 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 20:38:47 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:31:18 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/09 16:47:37 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/13 18:43:17 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 void	ft_putnbr(int n)
 {
-	int		len;
-	int		temp;
-	int		power;
+	unsigned int	nb;
 
-	temp = n;
-	len = 0;
-	power = 1;
-	if (n < 0)
+	if (n <= 2147483647 && n >= -2147483648)
 	{
-		ft_putchar('-');
-		temp = -temp;
-	}
-	if (n == -2147483648)
-	{
-		ft_putstr("2147483648");
-		return ;
-	}
-	while ((n = (n / 10)) != 0)
-		power = (power * 10);
-	while (power != '\0')
-	{
-		ft_putchar(temp / power + '0');
-		temp = temp % power;
-		power = power / 10;
+		nb = n;
+		if (n < 0)
+		{
+			ft_putchar('-');
+			nb = -n;
+		}
+		if (nb > 9)
+		{
+			ft_putnbr(nb / 10);
+			ft_putnbr(nb % 10);
+		}
+		if (nb <= 9)
+			ft_putchar(nb + '0');
 	}
 }

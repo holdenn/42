@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 04:37:02 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/21 04:56:51 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/12 20:38:25 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/12 22:09:12 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,27 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*src2;
-	char	*dst2;
+	char	*tmp;
+	char	*tmp2;
+	size_t	i;
 
-	src2 = (char*)src;
-	dst2 = (char*)dst;
-	if (src2 < dst2)
+	i = len;
+	tmp = (char*)dst;
+	tmp2 = (char*)src;
+	if (dst > src)
 	{
-		src2 = (char *)src + len - 1;
-		dst2 = (char *)dst + len - 1;
-		while (len--)
-			*dst2-- = *src2--;
-		return (dst);
+		while (len > 0)
+		{
+			tmp[len - 1] = tmp2[len - 1];
+			len--;
+		}
+		dst = tmp;
 	}
-	while (len--)
-		*dst2++ = *src2++;
+	else
+	{
+		while (len-- > 0)
+			*tmp++ = *tmp2++;
+		dst = tmp - i;
+	}
 	return (dst);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr2.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:25:26 by qchantel          #+#    #+#             */
-/*   Updated: 2017/12/13 14:47:56 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/12 16:55:32 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/12 17:22:58 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != (char)c && *s != '\0')
+	while ((*s))
+	{
+		if (*s == c)
+			return ((char*)s);
 		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	}
+	if ((char)*s == '\0' && c == 0)
+		return ((char*)s);
+	return ((char*)NULL);
 }

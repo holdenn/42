@@ -3,50 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 00:28:49 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:27:50 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/14 19:07:22 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/15 16:07:28 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static void	itoa_isnegative(int *n, int *negative)
+static size_t	get_nb_digits(long n)
 {
-	if (*n < 0)
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
 	{
-		*n *= -1;
-		*negative = 1;
+		i++;
+		n = -n;
 	}
-}
-
-char		*ft_itoa(int n)
-{
-	int		tmp;
-	int		len;
-	int		negative;
-	char	*str;
-
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	tmp = n;
-	len = 2;
-	negative = 0;
-	itoa_isnegative(&n, &negative);
-	while (tmp /= 10)
-		len++;
-	len += negative;
-	if ((str = (char*)malloc(sizeof(char) * len)) == NULL)
-		return (NULL);
-	str[--len] = '\0';
-	while (len--)
+	while (n >= 1)
 	{
-		str[len] = n % 10 + '0';
+		i++;
 		n = n / 10;
 	}
-	if (negative)
-		str[0] = '-';
-	return (str);
+	return (i);
+}
+
+char			*ft_itoa(int n)
+{
+	char	*dest;
+	long	nb;
+	size_t	len;
+
+	nb = n;
+	len = get_nb_digits(nb);
+	if ((dest = (char*)malloc(sizeof(char) * len + 1)) == NULL)
+		return (NULL);
+	if (nb < 0)
+		nb = -nb;
+	dest[len] = '\0';
+	while (len > 0)
+	{
+		dest[--len] = (nb % 10) + 48;
+		nb = nb / 10;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
 }

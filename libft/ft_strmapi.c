@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi2.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 22:46:24 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:26:20 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/14 15:11:18 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/14 15:14:43 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*new;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	if (s == NULL || f == NULL)
-		return (0);
-	if ((new = ft_strnew(ft_strlen(s))) == NULL)
-		return (0);
-	while (s[i])
+	j = 0;
+	if (!(f) || !(s))
+		return (NULL);
+	i = ft_strlen(s);
+	if ((str = ft_memalloc(i + 1)) == NULL)
+		return (NULL);
+	while (i > 0)
 	{
-		new[i] = (*f)(i, s[i]);
-		i++;
+		str[j] = f((unsigned int)j, s[j]);
+		j++;
+		i--;
 	}
-	return (new);
+	return (str);
 }

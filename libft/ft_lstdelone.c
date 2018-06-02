@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone2.c                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:31:24 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/23 13:46:16 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/15 18:21:38 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/15 19:01:51 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	if (!alst || !*alst || !del)
+	if (!(alst) || !(del))
 		return ;
 	del((*alst)->content, (*alst)->content_size);
-	ft_memdel((void **)alst);
+	free(*alst);
+	*alst = NULL;
 }

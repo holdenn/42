@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew2.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 22:43:13 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:34:14 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/15 17:15:03 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/15 18:19:53 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*new;
+	t_list	*elem;
 
-	if ((new = (t_list *)malloc(sizeof(*new))) == NULL)
+	if ((elem = (t_list*)malloc(sizeof(t_list))) == NULL)
 		return (NULL);
 	if (content == NULL)
 	{
-		new->content = NULL;
-		new->content_size = 0;
+		elem->content = NULL;
+		elem->content_size = 0;
 	}
 	else
 	{
-		if (((new->content = (malloc(content_size))) == NULL))
-		{
-			free(new);
+		if ((elem->content = malloc(content_size)) == NULL)
 			return (NULL);
-		}
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
+		elem->content = ft_memcpy(elem->content, content, content_size);
+		elem->content_size = content_size;
 	}
-	new->next = NULL;
-	return (new);
+	elem->next = NULL;
+	return (elem);
 }

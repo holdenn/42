@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc2.c                                     :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/19 22:58:30 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/29 12:23:49 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/13 15:35:05 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/13 17:11:36 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_memalloc(size_t size)
 {
-	void	*sp;
+	unsigned char	*p;
 
-	sp = malloc(sizeof(size_t) * size);
-	if (sp == NULL)
+	if ((p = malloc(size)) == NULL)
 		return (NULL);
-	ft_memset(sp, 0, size);
-	return (sp);
+	ft_memset(p, 0, size);
+	return (p);
 }

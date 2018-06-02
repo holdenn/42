@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset2.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:41:44 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/23 15:32:45 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/09 17:04:31 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/15 18:09:30 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*slot;
-	size_t	i;
+	unsigned char	*dest;
+	size_t			i;
 
-	slot = s;
 	i = 0;
-	while (i < n)
-		*(slot + i++) = c;
-	return (s);
+	dest = (unsigned char*)b;
+	while (i < len)
+		dest[i++] = (unsigned char)c;
+	b = dest;
+	return (b);
 }

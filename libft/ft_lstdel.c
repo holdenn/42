@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel2.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:30:09 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/23 13:56:57 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/15 18:42:07 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/15 19:52:55 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*next;
-	t_list	**cpy;
+	t_list	*tmp;
+	t_list	*nextnode;
 
-	cpy = alst;
-	if (!del)
+	if (!(alst) || !(del))
 		return ;
-	while (*cpy)
+	tmp = *alst;
+	while (tmp)
 	{
-		cpy = alst;
-		next = (*cpy)->next;
-		ft_lstdelone(cpy, del);
-		*alst = next;
+		nextnode = tmp->next;
+		ft_lstdelone(&tmp, del);
+		tmp = nextnode;
 	}
+	*alst = NULL;
 }

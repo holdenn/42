@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 05:06:06 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/27 07:04:52 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/13 15:11:53 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/13 15:32:26 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*st1;
-	char	*st2;
-	size_t	i;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-	i = 0;
-	if (s1 == s2 || n <= 0)
-		return (0);
-	st1 = (char *)s1;
-	st2 = (char *)s2;
-	while (i < n && (st1[i] == st2[i]))
+	tmp1 = (unsigned char*)s1;
+	tmp2 = (unsigned char*)s2;
+	while (n-- > 0)
 	{
-		i++;
-		if (i == n)
-			return (0);
+		if ((unsigned char)*tmp1 != (unsigned char)*tmp2)
+			return ((unsigned char)(*tmp1) - (unsigned char)(*tmp2));
+		tmp1++;
+		tmp2++;
 	}
-	return ((unsigned char)st1[i] - (unsigned char)st2[i]);
+	return (0);
 }

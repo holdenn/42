@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap2.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzaim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 16:34:58 by qchantel          #+#    #+#             */
-/*   Updated: 2017/11/23 14:29:37 by qchantel         ###   ########.fr       */
+/*   Created: 2017/11/15 20:18:52 by wzaim             #+#    #+#             */
+/*   Updated: 2017/11/16 11:36:19 by wzaim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
+	t_list	*witness;
 	t_list	*new;
-	t_list	*cpy;
-	t_list	*st;
 
-	cpy = f(lst);
-	if (!f || !lst || !(new = ft_lstnew(cpy->content, cpy->content_size)))
+	if (!(lst) || !(f))
 		return (NULL);
-	st = new;
-	lst = lst->next;
-	while (lst)
+	new = f(lst);
+	witness = new;
+	while (lst->next)
 	{
-		cpy = f(lst);
-		if (!(new->next = ft_lstnew(cpy->content, cpy->content_size)))
-			return (NULL);
+		new->next = f(lst->next);
 		new = new->next;
 		lst = lst->next;
 	}
-	return (st);
+	return (witness);
 }
