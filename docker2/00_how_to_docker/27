@@ -1,0 +1,1 @@
+docker service logs --follow j4rrboua7uqw4ht9kntqc674s

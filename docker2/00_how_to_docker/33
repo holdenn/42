@@ -1,0 +1,3 @@
+#flag -a lists all (include intermediate), flag q, as usual, shows only ID
+#the i in rmi specifies that you are targeting an image
+docker image rmi -f $(docker images -aq)

@@ -1,0 +1,3 @@
+#overlay est un driver disponible lorsque l'on set un network, a l instar de brigde, host, macvlan, none(desactive tous les networks), ...
+
+docker network create -d overlay overmind
