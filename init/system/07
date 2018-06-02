@@ -1,1 +1,0 @@
-ps -aux | grep "sshd" | head -1 | cut -d " " -f 7 | cat -e

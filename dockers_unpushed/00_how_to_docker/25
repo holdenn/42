@@ -1,3 +1,0 @@
-#on est dans le current swarm car les var d'env sont set sur le manager
-
-docker service ls

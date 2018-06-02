@@ -1,3 +1,0 @@
-#! /env/bash
-
-ls -lS $1
