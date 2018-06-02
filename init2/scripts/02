@@ -1,0 +1,10 @@
+#edit the crontab file with
+#crontab -e
+#0 4 * * * ~/home/scripts/02
+
+#! /bin/sh
+{
+	sudo apt-get update 
+	sudo apt-get upgrade -y
+}> /tmp/update_script.log
+sudo mv /tmp/update_script.log /var/log/update_script.log

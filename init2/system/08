@@ -1,0 +1,1 @@
+Ici nous n'avons pas de keys RSA autorisees. Lorsque l'on en ajoutera une (par exemple pour github) un fichier ~/.ssh/authorized_keys se creera avec la/les cles autorisees
